@@ -1,3 +1,8 @@
+/* Hero block - AirPulse Pro Kinetic Brutalism */
+.hero-container {
+  position: relative;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,23 +10,44 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 100px 24px 80px;
+  min-height: 85vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-color: var(--background-color);
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, var(--background-color) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* diagonal cut at bottom */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--surface-color);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  z-index: 2;
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   object-fit: cover;
-  box-sizing: border-box;
 }
 
 .hero img {
@@ -30,8 +56,123 @@
   height: 100%;
 }
 
+/* content overlay */
+.hero > div:not(:has(picture)) {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero h1 {
+  color: var(--text-color);
+  font-size: var(--heading-font-size-xxl);
+  line-height: 0.95;
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 40px rgb(0 0 0 / 60%);
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--link-color);
+}
+
+.hero h1 strong {
+  font-weight: 400;
+  color: var(--accent-coral);
+}
+
+.hero h6,
+.hero h5 {
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  color: var(--link-color);
+  letter-spacing: 0.12em;
+  border: 1px solid var(--link-color);
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: var(--body-font-size-m);
+  max-width: 500px;
+  margin-bottom: 24px;
+}
+
+.hero p em {
+  font-style: normal;
+  color: var(--link-color);
+  font-weight: 500;
+}
+
+.hero p strong {
+  color: var(--link-color);
+  font-weight: 500;
+}
+
+/* stat row in hero */
+.hero ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  gap: 32px;
+}
+
+.hero ul li {
+  font-family: var(--mono-font-family);
+  font-size: var(--stat-font-size-m);
+  font-weight: 700;
+  color: var(--text-color);
+  line-height: 1;
+}
+
+.hero ul li em {
+  display: block;
+  font-style: normal;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* CTA buttons */
+.hero .button-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero a.button:any-link {
+  font-size: var(--body-font-size-s);
+}
+
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 140px 32px 120px;
+    min-height: 90vh;
+  }
+
+  .hero h1 {
+    font-size: var(--heading-font-size-xxl);
+  }
+
+  .hero::after {
+    height: 80px;
+  }
+
+  .hero ul {
+    gap: 48px;
+  }
+
+  .hero ul li {
+    font-size: var(--stat-font-size-l);
   }
 }

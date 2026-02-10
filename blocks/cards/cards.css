@@ -1,27 +1,121 @@
+/* Cards block - AirPulse Pro feature cards with stats */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
+@media (width >= 600px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.cards > ul > li:hover {
+  border-color: var(--link-color);
+  transform: translateY(-4px);
+}
+
+/* accent top border on hover */
+.cards > ul > li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--link-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.cards > ul > li:hover::before {
+  transform: scaleX(1);
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 0;
 }
 
+.cards .cards-card-body h3,
+.cards .cards-card-body h4 {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* stat value styling */
+.cards .cards-card-body h3 strong,
+.cards .cards-card-body h4 strong {
+  font-family: var(--mono-font-family);
+  font-size: var(--stat-font-size-m);
+  font-weight: 700;
+  color: var(--link-color);
+}
+
+.cards .cards-card-body h3 em,
+.cards .cards-card-body h4 em {
+  font-family: var(--mono-font-family);
+  font-size: var(--stat-font-size-m);
+  font-weight: 700;
+  color: var(--accent-coral);
+  font-style: normal;
+}
+
+/* sub-label for stats */
+.cards .cards-card-body h5,
+.cards .cards-card-body h6 {
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* card with image */
 .cards .cards-card-image {
   line-height: 0;
+  margin-bottom: 20px;
 }
 
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }

@@ -1,20 +1,65 @@
+/* Footer block - AirPulse Pro dark theme */
 footer {
-  background-color: var(--light-color);
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
   font-size: var(--body-font-size-xs);
+  color: var(--text-muted);
 }
 
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
   padding: 40px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 footer .footer p {
   margin: 0;
 }
 
+footer .footer a:any-link {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--body-font-size-xs);
+  transition: color 0.2s;
+}
+
+footer .footer a:hover {
+  color: var(--link-color);
+}
+
+/* brand in footer */
+footer .footer h5,
+footer .footer h6 {
+  font-family: var(--heading-font-family);
+  color: var(--accent-coral);
+  font-size: var(--heading-font-size-s);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* footer nav links */
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+footer .footer ul li {
+  font-weight: 400;
+}
+
 @media (width >= 900px) {
   footer .footer > div {
     padding: 40px 32px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }

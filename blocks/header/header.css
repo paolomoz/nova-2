@@ -1,6 +1,7 @@
-/* header and nav layout */
+/* header and nav layout - AirPulse Pro dark theme */
 header .nav-wrapper {
   background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -28,11 +29,14 @@ header nav[aria-expanded='true'] {
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
+  background-color: var(--background-color);
 }
 
 @media (width >= 900px) {
   header .nav-wrapper {
-    position: relative;
+    position: fixed;
+    backdrop-filter: blur(12px);
+    background-color: rgb(13 15 13 / 90%);
   }
 
   header nav {
@@ -55,7 +59,15 @@ header nav p {
 }
 
 header nav a:any-link {
-  color: currentcolor;
+  color: var(--text-color);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+header nav a:hover {
+  color: var(--link-color);
 }
 
 /* hamburger */
@@ -72,8 +84,8 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: inherit;
+  background-color: transparent;
+  color: var(--text-color);
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
@@ -99,7 +111,7 @@ header nav[aria-expanded='false'] .nav-hamburger-icon,
 header nav[aria-expanded='false'] .nav-hamburger-icon::before,
 header nav[aria-expanded='false'] .nav-hamburger-icon::after {
   height: 2px;
-  border-radius: 2px;
+  border-radius: 0;
   background: currentcolor;
 }
 
@@ -123,7 +135,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   transform-origin: 2px 1px;
   width: 24px;
   height: 2px;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 header nav[aria-expanded='true'] .nav-hamburger-icon::after {
@@ -143,9 +155,19 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 header .nav-brand {
   grid-area: brand;
   flex-basis: 128px;
+  font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-s);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+header .nav-brand a:any-link {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  color: var(--link-color);
+  letter-spacing: 0.04em;
 }
 
 header nav .nav-brand img {
@@ -170,7 +192,7 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
 }
 
 header nav .nav-sections ul > li {
@@ -212,7 +234,7 @@ header nav .nav-sections ul > li > ul > li {
     width: 6px;
     height: 6px;
     border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
+    border-radius: 0;
     border-width: 2px 2px 0 0;
   }
 
@@ -245,7 +267,8 @@ header nav .nav-sections ul > li > ul > li {
     width: 200px;
     top: 150%;
     padding: 16px;
-    background-color: var(--light-color);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
     white-space: initial;
   }
 
@@ -258,7 +281,7 @@ header nav .nav-sections ul > li > ul > li {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
+    border-bottom: 8px solid var(--surface-color);
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
@@ -266,7 +289,21 @@ header nav .nav-sections ul > li > ul > li {
   }
 }
 
-/* tools */
+/* tools - CTA button in nav */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+header nav .nav-tools a.button:any-link {
+  margin: 0;
+  padding: 0.5em 1.2em;
+  font-size: var(--body-font-size-xs);
+  background-color: var(--accent-coral);
+  border-color: var(--accent-coral);
+  color: var(--background-color);
+}
+
+header nav .nav-tools a.button:hover {
+  background-color: var(--accent-coral-hover);
+  border-color: var(--accent-coral-hover);
 }

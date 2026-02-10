@@ -1,3 +1,4 @@
+/* Columns block - AirPulse Pro specs & split layout */
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -17,17 +18,109 @@
 
 .columns > div > .columns-img-col img {
   display: block;
+  position: relative;
 }
 
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 48px;
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
   }
+}
+
+/* Specs table styling for columns with data pairs */
+.columns h3,
+.columns h4 {
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.columns p {
+  color: var(--text-muted);
+}
+
+/* Strong text in columns = lime stat values */
+.columns strong {
+  font-family: var(--mono-font-family);
+  font-size: var(--stat-font-size-m);
+  font-weight: 700;
+  color: var(--link-color);
+  display: block;
+  line-height: 1.2;
+}
+
+/* Emphasized text = coral stat values */
+.columns em {
+  font-family: var(--mono-font-family);
+  font-size: var(--stat-font-size-m);
+  font-weight: 700;
+  color: var(--accent-coral);
+  font-style: normal;
+  display: block;
+  line-height: 1.2;
+}
+
+/* Image column with overlay gradient for CTA sections */
+.columns > div > .columns-img-col picture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(13 15 13 / 40%) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Spec grid variant - for technical specs in grid form */
+.columns.specs > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 1px solid var(--border-color);
+}
+
+@media (width >= 600px) {
+  .columns.specs > div {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.columns.specs > div > div {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (width >= 600px) {
+  .columns.specs > div > div {
+    border-right: 1px solid var(--border-color);
+  }
+
+  .columns.specs > div > div:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+.columns.specs h6 {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.columns.specs p {
+  font-family: var(--mono-font-family);
+  font-size: var(--stat-font-size-m);
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.2;
 }
